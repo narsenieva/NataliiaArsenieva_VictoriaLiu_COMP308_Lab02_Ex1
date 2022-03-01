@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import api from '../api'
 
 import styled from 'styled-components'
-import { StudentInsert } from '.'
+//import { StudentInsert } from '.'
 
 const Title = styled.h1.attrs({
     className: 'h1',
@@ -75,13 +75,9 @@ const CancelButton = styled.a.attrs({
                 setPhoneNumber('');
                 setEmail('');
                 setProgram('');
-                window.location.href = `/students/list`;
-                
+                window.location.href = `/students/list`;  
             })
-
-
         };
-
             
         return (
             <Wrapper>
@@ -93,28 +89,56 @@ const CancelButton = styled.a.attrs({
                     value={studentNumber}
                     onChange={e => setStudentNumber(e.target.value)}
                 />
-
-                <Label>Rating: </Label>
+                <Label>First Name: </Label>
+                <InputText
+                    type="text"
+                    value={firstName}
+                    onChange={e => setFirstName(e.target.value)}
+                />
+                <Label>Last Name: </Label>
+                <InputText
+                    type="text"
+                    value={lastName}
+                    onChange={e => setLastName(e.target.value)}
+                />
+                <Label>Address: </Label>
+                <InputText
+                    type="text"
+                    value={address}
+                    onChange={e => setAddress(e.target.value)}
+                />
+                <Label>City: </Label>
+                <InputText
+                    type="text"
+                    value={city}
+                    onChange={e => setCity(e.target.value)}
+                />
+                <Label>Phone Number: </Label>
                 <InputText
                     type="number"
                     step="0.1"
                     lang="en-US"
-                    min="0"
+                    min="10"
                     max="10"
                     pattern="[0-9]+([,\.][0-9]+)?"
-                    value={rating}
-                    onChange={handleChangeInputRating}
+                    value={phoneNumber}
+                    onChange={handleChangeInputPhoneNumber}
                 />
-
-                <Label>Time: </Label>
+                <Label>Email: </Label>
                 <InputText
                     type="text"
-                    value={time}
-                    onChange={e => setTime(e.target.value)}
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+                <Label>Program: </Label>
+                <InputText
+                    type="text"
+                    value={program}
+                    onChange={e => setProgram(e.target.value)}
                 />
 
-                <Button onClick={handleAddMovie}>Add Movie</Button>
-                <CancelButton href={'/movies/list'}>Cancel</CancelButton>
+                <Button onClick={handleAddStudent}>Add Student</Button>
+                <CancelButton href={'/students/list'}>Cancel</CancelButton>
             </Wrapper>
         );
         }
