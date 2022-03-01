@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const Student = new Schema(
     {
-        studentNumber: { type: Number, required: true },
+        studentNumber: { type: String, required: true },
         password: { type: String, required: true },
         firstName: { type: String, required: true },
         lastName: { type: String, required: true },
@@ -11,13 +11,13 @@ const Student = new Schema(
         city: { type: String, required: true },
         phoneNumber: { type: String, required: true },
         email: { type: String, required: true },
-        program: { type: String, required: true },
-        course: {
-            type: Schema.ObjectId,
-            ref: 'Course'
-        }
+        program: { type: String, required: true }
+        // course: {
+        //     type: Schema.ObjectId,
+        //     ref: 'Course'
+        // }
     },
     { timestamps: true },
 )
 
-module.exports = mongoose.model('college', Student) 
+module.exports = mongoose.model('student', Student) 

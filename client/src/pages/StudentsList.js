@@ -46,7 +46,7 @@ const    deleteUser = (event) => {
     return (<Delete onClick={deleteUser}>Delete</Delete>);
 }
 
-function StudentList(props){
+function StudentsList(props){
     const [students, setStudents] = useState([]);
   
     const [isLoading, setLoading] = useState(false);
@@ -158,4 +158,4 @@ function StudentList(props){
 }
 
 
-export default StudentList
+export default StudentsList

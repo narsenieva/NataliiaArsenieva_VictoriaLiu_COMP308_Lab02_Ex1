@@ -1,4 +1,4 @@
-const Student = require('../models/student.model')
+const Student = require('../models/student-model')
 
 
 createStudent = (req, res) => {
@@ -78,6 +78,23 @@ updateStudent = async (req, res) => {
     })
 }
 
+deleteStudent = async (req, res) => {
+    await Student.findOneAndDelete({ _id: req.params.id }, (err, student) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+
+        if (!student) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Student not found` })
+        }
+
+        return res.status(200).json({ success: true, data: student })
+    }).catch(err => console.log(err))
+}
+
+
 getStudents = async (req, res) => {
     await Student.find({}, (err, students) => {
         if (err) {
@@ -92,11 +109,22 @@ getStudents = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+getStudentById = async (req, res) => {
+    await Student.findOne({ _id: req.params.id }, (err, student) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
 
-/*
+        return res.status(200).json({ success: true, data: student })
+    }).catch(err => console.log(err))
+}
+
+
 module.exports = {
     createStudent,
     updateStudent,
+    deleteStudent,
     getStudents,
+    getStudentById
 }
-*/
+

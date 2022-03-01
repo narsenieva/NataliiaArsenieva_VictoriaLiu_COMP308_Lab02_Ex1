@@ -34,12 +34,7 @@ const CancelButton = styled.a.attrs({
     className: `btn btn-danger`,
 })`
     margin: 15px 15px 15px 5px;
-
-
-
-
-
-    `
+  `
 
 
     function StudentInsert(props) {
@@ -53,13 +48,13 @@ const CancelButton = styled.a.attrs({
         const [email, setEmail] = useState('');
         const [program, setProgram] = useState('');
 
-        const handleChangeInputPhoneNumber = (event )=> {
-            const value = event.target.validity.valid
-                ? event.target.value
-                : phoneNumber
+        // const handleChangeInputPhoneNumber = (event )=> {
+        //     const value = event.target.validity.valid
+        //         ? event.target.value
+        //         : phoneNumber
     
-            setPhoneNumber(value);
-        }
+        //     setPhoneNumber(value);
+        // }
         const handleAddStudent = async (event) =>{
             //const arrayTime = time.split('/')
             const payload = { studentNumber, password, firstName, lastName,
@@ -115,14 +110,9 @@ const CancelButton = styled.a.attrs({
                 />
                 <Label>Phone Number: </Label>
                 <InputText
-                    type="number"
-                    step="0.1"
-                    lang="en-US"
-                    min="10"
-                    max="10"
-                    pattern="[0-9]+([,\.][0-9]+)?"
+                    type="text"
                     value={phoneNumber}
-                    onChange={handleChangeInputPhoneNumber}
+                    onChange={e => setPhoneNumber(e.target.value)}
                 />
                 <Label>Email: </Label>
                 <InputText

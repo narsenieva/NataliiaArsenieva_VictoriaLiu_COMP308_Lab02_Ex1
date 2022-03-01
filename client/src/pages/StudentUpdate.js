@@ -45,7 +45,7 @@ function StudentsUpdate(props) {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [program, setProgram] = useState('');
-    const [course, setCourse] = useState('');
+   // const [course, setCourse] = useState('');
     useEffect(()=>{
         const fetchData = async () => {
         const student = await api.getStudentById(id)
@@ -58,14 +58,14 @@ function StudentsUpdate(props) {
         setPhoneNumber(student.data.data.phoneNumber);
         setEmail(student.data.data.email);
         setProgram(student.data.data.program);
-        setCourse(student.data.data.course);
+       // setCourse(student.data.data.course);
         };
        fetchData(); 
     },[id]);
     
     const handleUpdateStudent = async (event) =>{
         const payload = { studentNumber, password, firstName, lastName, 
-            address, city, phoneNumber, email, program, course}
+            address, city, phoneNumber, email, program}
         await api.updateStudentById(id, payload).then(res => {
             window.alert(`Student updated successfully`)
             setStudentNumber('');
@@ -77,7 +77,7 @@ function StudentsUpdate(props) {
             setPhoneNumber('');
             setEmail('');
             setProgram('');
-            setCourse('');
+            //setCourse('');
             window.location.href = `/students/list`;
             
         })
@@ -152,12 +152,7 @@ function StudentsUpdate(props) {
                 onChange={e => setProgram(e.target.value)}
             />
 
-            <Label>Course: </Label>
-            <InputText
-                type="text"
-                value={course}
-                onChange={e => setName(e.target.value)}
-            />
+           
 
             <Button onClick={handleUpdateStudent}>Update Student</Button>
             <CancelButton href={'/students/list'}>Cancel</CancelButton>
